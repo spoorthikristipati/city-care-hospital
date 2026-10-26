@@ -1,0 +1,100 @@
+-------------------stage-1 ----------------------
+
+Step A: Initialize Git & Initial Commit
+git init
+git add .
+git commit -m "Stage 1: Initial commit with Authentication System"
+
+Step B: Push to GitHub/GitLab
+git branch -M main
+git remote add origin https://github.com/<your-username>/hospital-dashboard.git
+git push -u origin main
+
+
+Step C: Deploy Live (e.g., Render / Railway / PythonAnywhere)
+1. Go to your deployment platform (e.g., Render.com).
+
+2. Create a new Web Service linked to your GitHub repository hospital-dashboard.
+
+3. Set the build environment settings:
+
+4. Runtime: Python 3
+
+5. Build Command: pip install -r requirements.txt
+
+6. Start Command: gunicorn app:app
+
+7. Click Deploy. Your app will be live at a public URL (e.g., [https://hospital-dashboard.onrender.com](https://hospital-dashboard.onrender.com)).
+
+
+
+
+-------------------stage-2 ----------------------
+
+Step A: Create a Feature Branch
+
+git checkout -b feature/appointment-system
+
+
+
+---- Git Rebase & Live Update Workflow
+
+Step A: Commit Feature Changes locally
+
+git add app.py
+git commit -m "Stage 2: Add appointment booking system"
+
+Step B: Rebase onto Main Branch
+
+# Switch to main branch
+git checkout main
+
+# Fetch latest updates from remote (if any exist)
+git pull origin main
+
+# Rebase feature branch onto main
+git rebase feature/appointment-system
+
+
+Step C: Push Updated Code Live
+
+git push origin main
+
+
+
+
+RUN 
+
+
+python -m pip install Flask==3.0.3 gunicorn==22.0.0
+
+python -m pip install --upgrade "flask-cors>=4.0.1"
+
+python -m pip show Flask
+python -m pip show flask-cors
+python -m pip show gunicorn
+
+
+python app.py
+
+
+
+create users--------------
+
+Admin / Regular Account 1:
+
+Username: admin
+
+Password: admin123
+
+Patient Account 2:
+
+Username: patient
+
+Password: patient123
+
+
+SELECT * FROM users;
+update users set role="admin" where id=1;
+
+insert into users values("admin", "admin123", "admin");
